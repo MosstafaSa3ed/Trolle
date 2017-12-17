@@ -96,7 +96,6 @@ public class seller_UI {
 						store_Control s=new store_Control();
 						s.most_viewd(sell.getStores().get(choice-1));
 					}
-					
 				}
 			}
 			

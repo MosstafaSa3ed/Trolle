@@ -11,8 +11,12 @@ public class admin_Control {
 		}
 		int incrment=50;
 		Random ran=new Random();
-		int ind=ran.nextInt(DB.buyers.size()-1);
-		DB.buyers.get(ind).vouch+=incrment;
+		if(DB.buyers.size()>1) {
+			int ind=ran.nextInt(DB.buyers.size()-1);
+			DB.buyers.get(ind).vouch+=incrment;
+		}
+		else if(DB.buyers.size()==1)
+			DB.buyers.get(0).vouch+=incrment;
 	}
 	
 	public void add_new_prod(prod_Entity prod)
