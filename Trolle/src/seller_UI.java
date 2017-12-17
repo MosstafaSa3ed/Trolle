@@ -4,7 +4,7 @@ public class seller_UI {
 	
 	public void show(seller sell)
 	{
-		System.out.println("************welcome "+sell.name+" ************");
+		System.out.println("************welcome "+sell.getName()+" ************");
 		Scanner scan=new Scanner(System.in);
 		while(true) {
 			
@@ -27,33 +27,33 @@ public class seller_UI {
 				System.out.print("store address: ");
 				address=scan.nextLine();
 				store_Entity s= new store_Entity(name,address,type);
-				s.Seller=sell;
-				sell.stores.add(s);
+				s.setSeller(sell);
+				sell.getStores().add(s);
 				s.Insert();
 			}
 			else if(choice==4)
 			{
 				System.out.println("choose store to add product in it.\n");
-				for(int i=0;i<sell.stores.size();i++)
-					System.out.println(sell.stores.get(i).ID +" "+ sell.stores.get(i).name);
+				for(int i=0;i<sell.getStores().size();i++)
+					System.out.println(sell.getStores().get(i).getID() +" "+ sell.getStores().get(i).getName());
 				choice=scan.nextInt();
 				
 				store_Entity s=new store_Entity();
 				s=s.Select(choice);
-				if(s.ID==-1)
+				if(s.getID()==-1)
 					continue;
 				else 
 				{
 						System.out.println("please choose one of the existing products :-");
 						for(int i=0;i<DB.system_products.size();i++)
-							System.out.println(i+1 + " "+ DB.system_products.get(i).name);
+							System.out.println(i+1 + " "+ DB.system_products.get(i).getName());
 						
 						int tem=scan.nextInt();
 						if(tem <=DB.system_products.size())
 						{
 							String color,weight,des;
-							String name=DB.system_products.get(tem-1).name;
-							cate_Entity c=DB.system_products.get(tem-1).category;
+							String name=DB.system_products.get(tem-1).getName();
+							cate_Entity c=DB.system_products.get(tem-1).getCategory();
 							
 							double price;
 							scan.nextLine();
@@ -80,21 +80,21 @@ public class seller_UI {
 			}
 			else if(choice==6)
 			{
-				if(!sell.type)
+				if(!sell.isType())
 				{
 					System.out.print("yalla ya taaaafh ro7 e3ml account premium el awl. \n");
 				}
 				else
 				{
 					System.out.println("choose store to view the most viewed product.\n");
-					for(int i=0;i<sell.stores.size();i++)
-						System.out.println(i+1 +" "+ sell.stores.get(i).name);
+					for(int i=0;i<sell.getStores().size();i++)
+						System.out.println(i+1 +" "+ sell.getStores().get(i).getName());
 					choice=scan.nextInt();
 					
-					if(choice<= sell.stores.size() && choice >0)
+					if(choice<= sell.getStores().size() && choice >0)
 					{
 						store_Control s=new store_Control();
-						s.most_viewd(sell.stores.get(choice-1));
+						s.most_viewd(sell.getStores().get(choice-1));
 					}
 					
 				}
@@ -102,21 +102,21 @@ public class seller_UI {
 			
 			else if(choice==7)
 			{
-				if(!sell.type)
+				if(!sell.isType())
 				{
 					System.out.print("yalla ya taaaafh ro7 e3ml account premium el awl. \n");
 				}
 				else
 				{
 					System.out.println("choose store to view the most viewed product.\n");
-					for(int i=0;i<sell.stores.size();i++)
-						System.out.println(i+1 +" "+ sell.stores.get(i).name);
+					for(int i=0;i<sell.getStores().size();i++)
+						System.out.println(i+1 +" "+ sell.getStores().get(i).getName());
 					choice=scan.nextInt();
 					
-					if(choice<= sell.stores.size() && choice >0)
+					if(choice<= sell.getStores().size() && choice >0)
 					{
 						store_Control s=new store_Control();
-						s.num_prod(sell.stores.get(choice-1));
+						s.num_prod(sell.getStores().get(choice-1));
 					}
 					
 				}

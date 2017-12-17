@@ -8,11 +8,11 @@ public class user_Control {
 	}
 	seller login(seller tem,boolean type)
 	{
-		return tem.Select(tem.sellerID,type);
+		return tem.Select(tem.getSellerID(),type);
 	}
 	admin login(admin tem)
 	{
-		return tem.Select(tem.adminID);
+		return tem.Select(tem.getAdminID());
 	}
 	////////////////sign up
 	boolean signUp(buyer tem)
@@ -37,12 +37,12 @@ public class user_Control {
 			
 			for(int i=0;i<DB.categories.size();i++)
 			{
-				System.out.println(i+1 + "- "+DB.categories.get(i).name);
+				System.out.println(i+1 + "- "+DB.categories.get(i).getName());
 			}
 			choice=scan.nextInt();
 			if(choice>DB.categories.size())
 				return -1;
-			if(DB.categories.get(choice-1).products.size()==0) {
+			if(DB.categories.get(choice-1).getProducts().size()==0) {
 				System.out.println("There are no products here.");
 				return -1;
 			}
@@ -62,13 +62,13 @@ public class user_Control {
 			
 			for(int i=0;i<DB.stores.size();i++)
 			{
-				System.out.println(i+1 + "- "+DB.stores.get(i).name);
+				System.out.println(i+1 + "- "+DB.stores.get(i).getName());
 			}
 			choice=scan.nextInt();
 			if(choice> DB.stores.size())
 				return -1;
 			
-			if(DB.stores.get(choice-1).products.size()==0) {
+			if(DB.stores.get(choice-1).getProducts().size()==0) {
 				System.out.println("There are no products here.");
 				return -1;
 			}			

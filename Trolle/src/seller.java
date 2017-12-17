@@ -14,13 +14,13 @@ public class seller extends user {
 	seller(String n,String pass,String ad,String ph,String em,int agee,store_Entity s,boolean type)
 	{
 		this.type=type;
-		password=pass;
+		setPassword(pass);
 		counter++;
-		name=n;
-		address=ad;
-		phone_num=ph;
-		email=em;
-		age=agee;
+		setName(n);
+		setAddress(ad);
+		setPhone_num(ph);
+		setEmail(em);
+		setAge(agee);
 		sellerID=counter;
 		stores.add(s);
 		s.Insert();
@@ -28,15 +28,15 @@ public class seller extends user {
 	}
 	seller(String n,String pass,boolean type)
 	{
-		name=n;
-		password=pass;
+		setName(n);
+		setPassword(pass);
 		
 		if(!type) {
 			
 			sellerID=-1;
 			for(int i=0 ; i<DB.sellers.size() ;i++)
 			{
-				if(DB.sellers.get(i).name.equals(n) && DB.sellers.get(i).password.equals(pass)) {
+				if(DB.sellers.get(i).getName().equals(n) && DB.sellers.get(i).getPassword().equals(pass)) {
 					sellerID=DB.sellers.get(i).sellerID;
 					break;
 				}
@@ -49,7 +49,7 @@ public class seller extends user {
 			sellerID=-1;
 			for(int i=0 ; i<DB.premiums.size() ;i++)
 			{
-				if(DB.premiums.get(i).name.equals(n) && DB.premiums.get(i).password.equals(pass)) {
+				if(DB.premiums.get(i).getName().equals(n) && DB.premiums.get(i).getPassword().equals(pass)) {
 					sellerID=DB.premiums.get(i).sellerID;
 					break;
 				}
@@ -88,7 +88,7 @@ public class seller extends user {
 		if(!type) {
 			for(int i=0 ; i<DB.sellers.size() ; i++)
 			{
-				if(DB.sellers.get(i).name.equals(this.name))
+				if(DB.sellers.get(i).getName().equals(this.getName()))
 					return false;
 			}
 			DB.sellers.add(this);
@@ -98,7 +98,7 @@ public class seller extends user {
 		{
 			for(int i=0 ; i<DB.premiums.size() ; i++)
 			{
-				if(DB.premiums.get(i).name.equals(this.name))
+				if(DB.premiums.get(i).getName().equals(this.getName()))
 					return false;
 			}
 			DB.premiums.add(this);
@@ -124,11 +124,11 @@ public class seller extends user {
 		{
 			if(DB.sellers.get(i).sellerID==a.sellerID)
 			{
-				DB.sellers.get(i).name=a.name;
-				DB.sellers.get(i).address=a.address;
-				DB.sellers.get(i).phone_num=a.phone_num;
-				DB.sellers.get(i).email=a.email;
-				DB.sellers.get(i).age=a.age;
+				DB.sellers.get(i).setName(a.getName());
+				DB.sellers.get(i).setAddress(a.getAddress());
+				DB.sellers.get(i).setPhone_num(a.getPhone_num());
+				DB.sellers.get(i).setEmail(a.getEmail());
+				DB.sellers.get(i).setAge(a.getAge());
 				return true;
 			}
 		}

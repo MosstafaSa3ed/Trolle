@@ -131,7 +131,7 @@ public class Registration_UI {
 					store_Entity s= new store_Entity(n,addr,type);
 					sell= new seller(name,pass,address,phone,email,age,s,false);
 					//s.Insert();
-					s.Seller=sell;
+					s.setSeller(sell);
 					ok= uc.signUp(sell);
 					if(!ok)
 						System.out.println("this name is already exist..try another one :)");
@@ -152,15 +152,15 @@ public class Registration_UI {
 					
 					store_Entity s= new store_Entity(n,addr,type);
 					pre= new seller(name,pass,address,phone,email,age,s,true);
-					s.Insert();
-					s.Seller=pre;
+					//s.Insert();
+					s.setSeller(pre);
 					ok= uc.signUp(pre);
 					if(!ok)
 						System.out.println("this name is already exist..try another one :)");
 					else
 					{
 						seller_UI s_UI=new seller_UI();
-						s_UI.show(sell);
+						s_UI.show(pre);
 					}
 				}
 			

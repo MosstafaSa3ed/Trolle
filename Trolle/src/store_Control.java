@@ -3,9 +3,9 @@ public class store_Control {
 	public void explore_store(store_Entity s)
 	{
 		System.out.println("******************************************");
-		for(int i=0 ; i<s.products.size() ;i++)
+		for(int i=0 ; i<s.getProducts().size() ;i++)
 		{
-			System.out.println(i+1 +" " + s.products.get(i).name +" "+s.products.get(i).serial_num );
+			System.out.println(i+1 +" " + s.getProducts().get(i).getName() +" "+s.getProducts().get(i).getSerial_num() );
 			System.out.println("---------------");
 		}
 		System.out.println("******************************************");
@@ -16,16 +16,16 @@ public class store_Control {
 		boolean flag=false;
 		for(int i=0;i<DB.system_products.size();i++)
 		{
-			if(prod.name.equals(DB.system_products.get(i).name))
+			if(prod.getName().equals(DB.system_products.get(i).getName()))
 			{
 				flag=true;
 				break;
 			}
 		}
 		if(flag) {
-			store.products.add(prod);
-			prod.category=cate;
-			cate.products.add(prod);
+			store.getProducts().add(prod);
+			prod.setCategory(cate);
+			cate.getProducts().add(prod);
 			DB.products.add(prod);
 		}
 		else 
@@ -34,31 +34,31 @@ public class store_Control {
 	
 	public static void view_prod(store_Entity store)
 	{
-		for(int i=0;i<store.products.size();i++)
+		for(int i=0;i<store.getProducts().size();i++)
 		{
-			System.out.println(store.products.get(i).serial_num +" "+store.products.get(i).name);
+			System.out.println(store.getProducts().get(i).getSerial_num() +" "+store.getProducts().get(i).getName());
 			System.out.println("---------------");
 		}
 	}
 	public void num_prod(store_Entity store)
 	{
-		for(int i=0;i<store.products.size();i++)
+		for(int i=0;i<store.getProducts().size();i++)
 		{
-			System.out.println(store.products.get(i).name+" "+store.products.get(i).cnt_view);
+			System.out.println(store.getProducts().get(i).getName()+" "+store.getProducts().get(i).getCnt_view());
 			System.out.println("---------------");
 		}
 	}
 	public void most_viewd(store_Entity store)
 	{
 		int max=0,ind = 0;
-		for(int i=0;i<store.products.size();i++)
+		for(int i=0;i<store.getProducts().size();i++)
 		{
-			if(store.products.get(i).cnt_view>=max)
+			if(store.getProducts().get(i).getCnt_view()>=max)
 				{	
-					max=store.products.get(i).cnt_view;
+					max=store.getProducts().get(i).getCnt_view();
 					ind=i;
 				}
 		}
-		System.out.println(store.products.get(ind).name+" "+max);
+		System.out.println(store.getProducts().get(ind).getName()+" "+max);
 	}
 }
